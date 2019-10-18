@@ -1,0 +1,39 @@
+{
+    "name": "stackoverflow shortcuts",
+    "version": "1.0",
+    "permissions": [
+        "activeTab"
+    ],
+    "commands": {
+        "toggle-feature-question": {
+            "suggested_key": {
+                "default": "Alt+Q",
+                "mac": "Alt+Q"
+            },
+            "description": "Focus on SO question"
+        },
+        "toggle-feature-answer": {
+            "suggested_key": {
+                "default": "Alt+A",
+                "mac": "Alt+A"
+            },
+            "description": "Focus on SO answer sequentially"
+        }
+    },
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "run_at": "document_idle",
+            "js": ["content.js"]
+        }
+    ],
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": false
+    },
+    "browser_action": {
+        "default_title": "Testing EXT"
+    },
+    "description": "Keyboard shortcuts for Stack Overflow to switch between answers and question.",
+    "manifest_version": 2
+}
