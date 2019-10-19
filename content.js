@@ -1,22 +1,15 @@
-console.log("Hello from content.js");
 
 var index = 0;
-//var question = document.getElementById("question-header");
 var answers = document.getElementsByClassName("answer");
-//console.log(question);
-console.log(answers);
 
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendRespose){
-        console.log(request);
 
         if(request.command == "toggle-feature-question"){
-            //console.log("question");
             window.scrollTo({
                 top: 0,
                 behavior: "smooth"
             });
-            //document.body.scrollTop = document.documentElement.scrollTop = 0;
             index = 0;
         }
 
@@ -31,20 +24,26 @@ chrome.runtime.onMessage.addListener(
 
         // Need this in order to quiet "The message port closed before a response was received."
         sendRespose({});
+
     });
 
-function el_offset(element){
+// Get the offset of the given element in the context
+// of the entire document
+function getOffset(element){
 
     var rect = element.getBoundingClientRect(),
     scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
     scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     return {top: rect.top + scrollTop, left: rect.left + scrollLeft}
+
 }
 
 function scrollToAnswer(element){
 
-    var offset = el_offset(element);
+    var offset = getOffset(element);
     
+    // -55 is used so the scroll encapsulates
+    // the entire answer nicely
     window.scrollTo({
         top: offset.top - 55,
         behavior: "smooth"

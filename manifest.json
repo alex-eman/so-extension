@@ -34,6 +34,6 @@
     "browser_action": {
         "default_title": "Testing EXT"
     },
-    "description": "Keyboard shortcuts for Stack Overflow to switch between answers and question.",
+    "description": "Keyboard shortcuts for Stack Overflow to scroll through answers or to the question.",
     "manifest_version": 2
 }
